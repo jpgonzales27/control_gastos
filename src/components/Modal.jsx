@@ -6,7 +6,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
   const [mensaje, setMensaje] = useState("");
   const [nombre, setNombre] = useState("");
   const [cantidad, setCantidad] = useState("");
-  const [catergoria, setCatergoria] = useState("");
+  const [categoria, setCategoria] = useState("");
 
   const ocultarModal = () => {
     setAnimarModal(false);
@@ -17,7 +17,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if ([nombre, cantidad, catergoria].includes("")) {
+    if ([nombre, cantidad, categoria].includes("")) {
       setMensaje("Todos los campos son obligatorios");
 
       setTimeout(() => {
@@ -25,8 +25,7 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
       }, 3000);
       return;
     }
-    console.log("correcto todo lleno");
-    guardarGasto({ nombre, cantidad, catergoria });
+    guardarGasto({ nombre, cantidad, categoria });
   };
 
   return (
@@ -67,8 +66,8 @@ const Modal = ({ setModal, animarModal, setAnimarModal, guardarGasto }) => {
           <label htmlFor="categoria">Categoria</label>
           <select
             id="categoria"
-            value={catergoria}
-            onChange={(e) => setCatergoria(e.target.value)}
+            value={categoria}
+            onChange={(e) => setCategoria(e.target.value)}
           >
             <option value="">-- Seleccione --</option>
             <option value="ahorro">Ahorro</option>
