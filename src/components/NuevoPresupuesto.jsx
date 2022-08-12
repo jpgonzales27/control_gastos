@@ -15,7 +15,6 @@ const NuevoPresupuesto = ({
       return;
     }
     setMensaje("");
-    console.log(presupuesto);
     setIsValidPresupuesto(true);
   };
 
