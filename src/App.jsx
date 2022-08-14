@@ -30,6 +30,14 @@ function App() {
     }, 500);
   };
 
+  const eliminarGasto = (id) => {
+    console.log(id);
+    const gastoActualizados = gastos.filter(
+      (gastoActual) => gastoActual.id !== id
+    );
+    setGastos(gastoActualizados);
+  };
+
   const guardarGasto = (gasto) => {
     if (gasto.id) {
       //Actualizar
@@ -37,6 +45,7 @@ function App() {
         gastoState.id === gasto.id ? gasto : gastoState
       );
       setGastos(gastoActualizados);
+      setGastoEditar({});
     } else {
       //Nuevo gasto
       gasto.id = generarId();
@@ -62,7 +71,11 @@ function App() {
       {isValidPresupuesto && (
         <>
           <main>
-            <ListadoGastos gastos={gastos} setGastoEditar={setGastoEditar} />
+            <ListadoGastos
+              gastos={gastos}
+              setGastoEditar={setGastoEditar}
+              eliminarGasto={eliminarGasto}
+            />
           </main>
           <div className="nuevo-gasto">
             <img
@@ -81,6 +94,7 @@ function App() {
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
           gastoEditar={gastoEditar}
+          setGastoEditar={setGastoEditar}
         />
       )}
     </div>
